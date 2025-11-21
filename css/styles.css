@@ -360,11 +360,12 @@ p {
     margin-bottom: 2rem;
 }
 
-/* Section-specific text colors */
+/* Section-specific text colors for contrast */
 .section:nth-child(1) h1,
+.section:nth-child(1) h2,
 .section:nth-child(1) .subtitle,
 .section:nth-child(1) p {
-    color: #175676;
+    color: #0d3d4f;
 }
 
 .section:nth-child(2) h2,
@@ -374,16 +375,19 @@ p {
 }
 
 .section:nth-child(3) h2,
+.section:nth-child(3) h3,
 .section:nth-child(3) p {
     color: #ffffff;
 }
 
 .section:nth-child(4) h2,
+.section:nth-child(4) h3,
 .section:nth-child(4) p {
     color: #ffffff;
 }
 
 .section:nth-child(5) h2,
+.section:nth-child(5) h3,
 .section:nth-child(5) p {
     color: #ffffff;
 }
@@ -391,7 +395,8 @@ p {
 .section:nth-child(6) h2,
 .section:nth-child(6) h3,
 .section:nth-child(6) p,
-.section:nth-child(6) strong {
+.section:nth-child(6) strong,
+.section:nth-child(6) label {
     color: #ffffff;
 }
 
