@@ -1,0 +1,90 @@
+/* NAVIGATION STUFF GOES HERE  */
+#hamburgerBtn {
+    display: none;
+}
+#primaryNav {
+    display: flex;
+}
+nav {
+    ul li a {
+        border: none;
+        font-size: .85rem;
+        font-weight: $normalWeight;
+        padding: .5rem 1.2rem;
+        /*transition*/
+        transition: background 0.5s linear;
+    }
+    ul li a:hover {
+        background-color: $primaryColor;
+        color: white;
+    }
+    nav {
+        ul {
+            a {
+            img {display: none;}
+            span {display: block;}
+            }
+        }
+    }
+} // end nav
+
+
+
+/* --------------------------- HEADER RESPONSIVE - MEDIUM SCREENS --------------------------- */
+header .header-text {
+    .main-title {
+        font-size: 1.8rem; // Slightly larger on medium screens
+    }
+    
+    .header-slogan {
+        font-size: 0.7rem; // Proportionally smaller
+    }
+}
+
+/* --------------------------- HERO VIDEO OVERLAY - MEDIUM SCREENS --------------------------- */
+.hero .video-overlay {
+    padding: 0.9rem 0.75rem; // Minimal horizontal padding to move text further left
+    
+    .overlay-content {
+        .hero-heading {
+            font-size: 1.6rem; // Larger heading for tablets
+        }
+        
+        .hero-subtext {
+            font-size: 1rem; // Larger subtext for better readability
+        }
+    }
+}
+
+/* --------------------------- HEADER RESPONSIVE - MEDIUM SCREENS --------------------------- */
+#speakers {
+    .speakers-container {
+        grid-template-columns: repeat(2, 1fr); // Two columns for tablets
+        gap: 2rem;
+        justify-items: center; // Center cards in their grid areas
+    }
+    
+    .speaker-card {
+        height: 420px; // Slightly taller for better proportions on medium screens
+        max-width: 280px; // Constrain width for better proportions on medium screens
+    }
+}
+
+/* --------------------------- HERO VIDEO OVERLAY - MEDIUM SCREENS --------------------------- */
+.hero .video-overlay .overlay-content {
+    max-width: 80%; // Slightly wider content area on tablets
+    
+    .hero-heading {
+        font-size: 1.8rem; // Larger heading for better impact on tablets
+    }
+    
+    .hero-subtext {
+        font-size: 1.1rem; // Proportionally larger subtext
+    }
+}
+
+/* --------------------------- SLOGAN RESPONSIVE - MEDIUM SCREENS --------------------------- */
+main .slogan {
+    font-size: 1.2rem; // Slightly larger on medium screens
+    margin: -0.5rem $gutter 2rem $gutter; // More bottom margin for better spacing
+}

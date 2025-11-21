@@ -1,0 +1,526 @@
+/* Prevent adjustments of font size after orientation changes in IE on Windows Phone and in iOS.  */
+html {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+
+/*  Apply a natural box layout model to all elements  */
+* {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+} // end all elements
+
+/* --------------------------- BODY --------------------------- */
+body {
+    font-family: $defaultFont;
+    font-weight: $lightWeight;
+    min-width: 320px;
+    max-width: 1600px; // Prevent horizontal scrolling on very large screens
+    margin: 0 auto; // Center content on screens larger than 1600px
+    overflow-x: hidden; // Prevent any horizontal scrolling
+}
+
+
+
+/* --------------------------- HEADER --------------------------- */
+#headerWrapper {
+    border-bottom: 1px solid $greyColor;
+    background-color: $secondaryColor; // Teal blue background
+}
+header {
+    display: grid;
+    grid-template-columns: 50px auto 44px; //copy for assignment
+    column-gap: $gutter;
+    align-items: center; //vertically
+    padding: .5rem $gutter;
+    
+    // Container for header text (title + slogan)
+    .header-text {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start; // Left align the text stack
+        gap: 0.1rem; // Small gap between title and slogan
+        
+        .main-title {
+            font-size: 1.6rem;
+            font-weight: $lightWeight;
+            color: white; // White text on blue background
+            line-height: 1.2; // Tighter line height
+        }
+        
+        .header-slogan {
+            font-size: 0.65rem; // Smaller than main title
+            font-weight: $lightWeight;
+            color: rgba(255, 255, 255, 0.9); // Slightly transparent white for hierarchy
+            font-style: italic; // Elegant italic styling
+            line-height: 1;
+            margin-top: -0.1rem; // Pull slightly closer to main title
+        }
+    }
+} // end header
+
+
+/* --------------------------- NAVIGATION STUFF GOES HERE --------------------------- */
+// copy for assignment
+#hamburgerBtn {
+    position: relative;
+    height: 44px;
+    width: 44px;
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.3); // Light white border on blue background
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .top, .bottom {
+        position: absolute;
+        height: 3px;
+        width: 75%;
+        background-color: white; // White hamburger lines on blue background
+        transition: all .3s ease;
+        border-radius: 1px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .top {
+        top: 30%;
+    }
+    .bottom {
+        bottom: 30%;
+    }
+} // end hamburgerBtn
+
+#hamburgerBtn.open {
+    .top {
+        top: 50%;
+        transform: translateX(-50%) translateY(-50%) rotate(45deg);
+    }
+    .bottom {
+        bottom: 50%;
+        transform: translateX(-50%) translateY(50%) rotate(-45deg);
+    }
+} // end open
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: none;
+    li a {
+        color: $primaryColor;
+        display: block;
+        padding: .75rem $gutter;
+        text-decoration: none;
+        border-bottom: 1px solid $greyColor;
+        img {width: 25px;}
+        span {display: none;}
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.1); // Subtle hover effect on links
+        }
+    }
+
+    li.active {
+        background-color: lighten($menuColor, 10%); // Darker teal for active link background
+    }
+    li.active a {
+        color: rgb(58, 49, 0);   // Darker golden brown for better contrast compliance
+
+    }
+} // end nav
+
+//Show the menu links
+nav ul.open {
+    display: block;
+}
+
+section {
+    height: 100vh;
+}
+
+
+#navWrapper {
+    background-color: $menuColor ; // Teal blue background to match header
+    position: sticky;
+    top: 0;
+}
+
+
+
+
+
+
+
+
+
+
+/* --------------------------- MAIN CONTENT WRAPPER --------------------------- */
+
+main {
+    h1 {
+        padding: 1rem $gutter.5rem $gutter;
+        font-size: 1.5rem;
+        color: $secondaryColor;
+        font-weight: $lightWeight
+    }
+    
+    // Slogan/tagline styling
+    .slogan {
+        text-align: center; // Center the slogan
+        font-size: 1.1rem; // Slightly larger than regular text
+        font-style: italic; // Elegant italic styling
+        font-weight: $lightWeight; // Light weight for sophistication
+        color: #666; // Subtle gray color for distinction
+        margin: -0.5rem $gutter 1.5rem $gutter; // Negative top margin to bring closer to h1, bottom margin for space before hero
+        padding: 0; // Remove default paragraph padding
+        line-height: 1.4; // Comfortable line height
+    }
+    
+    h2 {
+        padding: 0 $gutter 0 $gutter; // Add left and right padding to match paragraphs
+        font-size: 1.8rem;
+        color: $activeNavColor; // Use active nav color for "Why Attend?" heading
+        font-weight: $normalWeight; // Make "Why Attend?" more bold
+        margin-bottom: 1rem;
+    }
+    
+    p {
+        padding: .5rem $gutter;
+        color: #333;
+        line-height: $leading;
+    }
+}// end main
+
+// copy for assignment
+.hero {
+    position: relative;
+    video {
+        width: 100%;
+        height: auto;
+    }
+    
+    // Full-width top overlay with gradient for InnovateTech 2025 message
+    .video-overlay {
+        position: absolute;
+        top: 0; // Flush with top edge
+        left: 0; // Flush with left edge
+        right: 0; // Extend to right edge
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.4) 70%, transparent 100%); // Gradient from dark to transparent
+        padding: 0.75rem 0.5rem; // Minimal horizontal padding to move text further left
+        
+        // Container for overlay text content
+        .overlay-content {
+            text-align: left; // Left-align text
+            color: white; // Ensure text is white
+            max-width: 70%; // Constrain width so text doesn't stretch too far right
+            margin-left: 0; // Ensure content starts at the far left
+            
+            // Main heading styling
+            .hero-heading {
+                font-size: 1.4rem; // Responsive base size for mobile
+                font-weight: bold; // Bold text for emphasis
+                line-height: 1.2; // Tight line spacing for heading
+                margin: 0 0 0.5rem 0; // Reduced space below heading
+                text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7); // Shadow for readability
+                color: white; // Explicitly white text
+                padding-left: 0; // No additional left padding - aligned with parent
+            }
+            
+            // Subtext styling
+            .hero-subtext {
+                font-size: 0.9rem; // Smaller than heading for mobile
+                font-weight: 300; // Light font weight for contrast
+                line-height: 1.4; // Good readability
+                margin: 0; // Remove default margins
+                opacity: 0.95; // Slightly transparent for hierarchy
+                text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7); // Text shadow for readability
+                color: white; // Explicitly white text
+                padding-left: 0; // No additional left padding - aligned with heading
+            }
+        }
+    }
+} // end hero
+
+/* --------------------------- SPEAKERS WRAPPER - FULL WIDTH BACKGROUND --------------------------- */
+#speakersWrapper {
+    width: 100%;
+    background-color: #f8f9fa; // Modern light gray background
+    padding: 3rem 0; // Vertical padding for breathing room
+    
+    // Apply same content constraints as main content areas
+    #speakers {
+        padding: 0 $gutter; // Side padding using existing gutter variable
+    }
+}
+
+/* --------------------------- SPEAKERS SECTION --------------------------- */
+#speakers {
+    // Remove individual max-width and padding - let it inherit from wrapper
+    
+    h2 {
+        text-align: center;
+        font-size: 2rem;
+        color: rgb(144, 122, 0); // Changed "Featured Speakers" to requested color
+        margin-top: 10px; // Move heading up away from cards
+        margin-bottom: 4rem; // Increase bottom margin for better spacing
+        font-weight: $normalWeight; // Make "Featured Speakers" more bold
+    }
+    
+    // Container for all speaker cards - responsive grid
+    .speakers-container {
+        display: grid;
+        grid-template-columns: 1fr; // Single column on mobile
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        // Ensure consistent alignment for all cards
+        justify-items: center; // Center cards horizontally
+        align-items: start; // Align cards to top to prevent height variations
+    }
+    
+    // Individual speaker card container
+    .speaker-card {
+        perspective: 1000px; // Creates 3D space for flip effect
+        height: 400px; // Fixed height for all cards - ensures consistency
+        width: 100%; // Full width within grid container
+        max-width: 320px; // Maximum width constraint for consistency
+        cursor: pointer;
+        transition: transform 0.3s ease, box-shadow 0.3s ease; // Smooth hover effects
+        
+        // Hover effect - glow and lift + show scrollbar
+        &:hover {
+            transform: translateY(-8px); // Lifts the card slightly
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15); // Enhanced shadow for glow effect
+            
+            // Show scrollbar when hovering over the entire card
+            .bio::-webkit-scrollbar-thumb {
+                opacity: 1; // Make scrollbar visible on card hover
+                background-color: rgba(255, 255, 255, 0.4);
+            }
+        }
+        
+        // Card inner container - this is what actually flips
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%; // Always fill the fixed 400px height
+            text-align: center;
+            /* Smooth transition for hover flips */
+            transition: transform 0.8s ease-in-out;
+            transform-style: preserve-3d; // Maintains 3D positioning
+            backface-visibility: hidden; // Standard property for backface visibility
+            border-radius: 12px; // Consistent rounded corners for all cards
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); // Uniform shadow for all cards
+            /* Vendor prefixes for better browser coverage */
+            -webkit-transform-style: preserve-3d;
+            -webkit-backface-visibility: hidden;
+            -moz-transform-style: preserve-3d;
+            -moz-backface-visibility: hidden;
+        }
+
+        /*
+        Hover / focus behavior:
+        - When the user hovers (or keyboard-focuses) the `.speaker-card`, we flip once to the back.
+        - When hover ends, the card smoothly flips back to the front.
+        - Simple front-to-back on hover, back-to-front on hover-out.
+        */
+        &:hover .card-inner,
+        &:focus-within .card-inner,
+        /* Support for an explicit 'is-hover' class set by JS for touch devices */
+        &.is-hover .card-inner {
+            /* Single flip to back on hover */
+            transform: rotateY(180deg) translateZ(0);
+            /* Use a smooth transition for the flip */
+            transition: transform 0.8s ease-in-out;
+        }
+
+        /* If the card also has the 'flipped' class (JS click), keep that behavior */
+        &.flipped .card-inner {
+            transform: rotateY(180deg) translateZ(0);
+        }
+        
+        // Front and back shared styles - ensures identical dimensions
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%; // Always full width of container
+            height: 100%; // Always full height (400px)
+            backface-visibility: hidden; // Hides the back side when not flipped
+            -webkit-backface-visibility: hidden; // Webkit prefix for better browser support
+            -moz-backface-visibility: hidden; // Mozilla prefix
+            border-radius: 12px; // Consistent rounded corners
+            overflow: hidden; // Prevents content from breaking card boundaries
+            // Ensure smooth transitions and proper 3D rendering
+            -webkit-transform: translateZ(0); // Force hardware acceleration
+            -moz-transform: translateZ(0); // Mozilla prefix
+            transform: translateZ(0); // Standard property
+        }
+        
+        // Front of card styling
+        .card-front {
+            background: white; // Consistent white background for all fronts
+            display: flex; // Use flexbox for consistent layout
+            flex-direction: column; // Stack image and overlay vertically
+            
+            .speaker-image {
+                width: 100%; // Always full width
+                height: 70%; // Consistent 70% height allocation for all images
+                object-fit: cover; // Crop images to fit consistently without distortion
+                object-position: center top; // Focus on lower part of images
+                flex-shrink: 0; // Prevent image from shrinking
+                display: block; // Remove any inline spacing issues
+            }
+            
+            // Overlay at bottom with speaker info - consistent positioning
+            .speaker-overlay {
+                flex: 1; // Take up remaining 30% of card height
+                display: flex; // Use flexbox for consistent text positioning
+                flex-direction: column; // Stack text elements vertically
+                justify-content: flex-start; // Move content to top of overlay area
+                background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.4));
+                color: white;
+                padding: 0.75rem 1rem 1rem 1rem; // Less top padding to move names up
+                
+                h3 {
+                    margin: 0 0 0.5rem 0;
+                    font-size: 1.2rem;
+                    font-weight: 500;
+                    line-height: 1.2; // Consistent line height
+                }
+                
+                .specialty {
+                    margin: 0 0 0.25rem 0;
+                    font-size: 0.9rem;
+                    color: #ffd700; // Gold color for specialty
+                    font-weight: 500;
+                    line-height: 1.2; // Consistent line height
+                }
+                
+                .talk-title {
+                    margin: 0;
+                    font-size: 0.85rem;
+                    line-height: 1.3;
+                    opacity: 0.9;
+                }
+            }
+        }
+        
+        // Back of card styling
+        .card-back {
+            background: linear-gradient(135deg, $secondaryColor, darken($secondaryColor, 10%));
+            color: white;
+            transform: rotateY(180deg) translateZ(0); // Initially flipped to back with hardware acceleration
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            
+            h3 {
+                margin: 0 0 1rem 0;
+                font-size: 1.3rem;
+                font-weight: 500;
+                border-bottom: 2px solid rgba(255,255,255,0.3);
+                padding-bottom: 0.5rem;
+            }
+            
+            .bio {
+                flex: 1;
+                overflow-y: auto; // Allows scrolling if content is too long
+                scroll-behavior: smooth; // Smooth scrolling behavior
+                padding-right: 8px; // Small padding to prevent content from touching scrollbar
+                
+                // Apple-style minimalist scrollbar for webkit browsers (Chrome, Safari, Edge)
+                &::-webkit-scrollbar {
+                    width: 4px; // Ultra-thin Apple-style width
+                    background: transparent; // No track background - just the thumb
+                }
+                
+                // No track styling - Apple scrollbars don't show a background track
+                &::-webkit-scrollbar-track {
+                    background: transparent; // Completely invisible track
+                }
+                
+                // Minimalist scrollbar thumb - just a thin line
+                &::-webkit-scrollbar-thumb {
+                    background-color: rgba(255, 255, 255, 0.2); // Very subtle, barely visible
+                    border-radius: 2px; // Slightly rounded for Apple aesthetic
+                    transition: all 0.3s ease; // Smooth fade transitions
+                    opacity: 0; // Start invisible
+                }
+                
+                // Show scrollbar on hover over the entire card or when actively scrolling
+                &:hover::-webkit-scrollbar-thumb {
+                    opacity: 1; // Fade in on hover
+                    background-color: rgba(255, 255, 255, 0.4); // More visible when hovering
+                }
+                
+                // Darker thumb when directly hovering over the scrollbar itself
+                &::-webkit-scrollbar-thumb:hover {
+                    background-color: rgba(255, 255, 255, 0.6); // Enhanced visibility for interaction
+                }
+                
+                // Firefox minimalist scrollbar (fallback for non-webkit browsers)
+                scrollbar-width: thin; // Thinnest option available in Firefox
+                scrollbar-color: rgba(255, 255, 255, 0.3) transparent; // Subtle thumb, no track
+                
+                p {
+                    margin: 0 0 1rem 0;
+                    font-size: 0.85rem;
+                    line-height: 1.4;
+                    text-align: left;
+                    
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+        
+        // Focus outline for accessibility (keyboard navigation only)
+        &:focus {
+            outline: none; // Remove default focus outline
+        }
+        
+        // Show focus outline only when navigating with keyboard
+        &:focus-visible {
+            outline: 3px solid $primaryColor;
+            outline-offset: 4px;
+        }
+        
+        // Additional hover glow effect for the card inner
+        &:hover .card-inner {
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+    }
+}
+
+/* --------------------------- FOOTER CENTERING --------------------------- */
+#footerWrapper {
+    width: 100%;
+    background-color: $secondaryColor; // Teal blue background to match header
+    border-top: 1px solid $greyColor; // Border to match header styling
+}
+
+footer {
+    max-width: $containerMaxWidth;
+    margin: 0 auto;
+    padding: $containerPadding;
+    text-align: center; // Center the footer content
+    
+    .legal {
+        margin: 0;
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.9); // White text to match header styling
+        line-height: 1.5;
+        
+        a {
+            color: white; // White links to match header text
+            text-decoration: none;
+            
+            &:hover {
+                text-decoration: underline;
+                color: rgba(255, 255, 255, 0.8); // Slightly dimmed on hover
+            }
+        }
+    }
+}
+

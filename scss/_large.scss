@@ -1,0 +1,28 @@
+body {
+    display: grid;
+    grid-template: 250px auto;
+}
+#navWrapper {
+    grid-row: 1 / span 3;
+    position: relative;
+}
+
+nav ul {
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
+    position: fixed;
+    li {flex: none;}
+}
+
+div.parent {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    
+    section{
+        grid-template-columns: 200px auto;
+        column-gap: 8px;
+    } 
+}
+
+/* NAVIGATION STUFF GOES HERE  */

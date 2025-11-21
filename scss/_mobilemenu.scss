@@ -1,0 +1,69 @@
+/*-----Navigation Button -----*/
+#theButton {
+    border: none;
+    background: none;
+    font-size: 2rem;
+    color: #555;
+    height: 44px;
+    cursor: pointer;
+
+    &::before {
+        content: "\2630"; /* Unicode for hamburger menu */
+    }
+}
+
+#theButton.open::before {
+    content: "\2715"; /* Unicode for 'X' */
+    font-size: 1.6rem
+} // end open button
+
+/*-----Navigation BAR -----*/
+#theNav {
+    background-color: $accentColor;
+    height: 90vh;
+    overflow: hidden;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li a {
+    display: block;
+    padding: .75rem 2vw;
+    font-size: 14px;
+    color: white;
+    text-decoration: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+li.active a {
+    background-color: $secondaryColor;
+}
+
+li a:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+&.open {
+    height: auto;
+} // end #theNav
+
+/* --------------------------- Submenues - optional .parent class indicares dropdowns --------------------------- */
+
+.parent>a::after {
+    content: "\25BC"; /* Downward arrow */
+    font-size: .75rem;
+    color: rgba(255, 255, 255, 0.5);
+    float: right;
+}
+
+.parent ul {
+    list-style-type: none;
+    padding: 0;
+    background-color: $primaryColor;
+    display: none;
+}
+
+.parent:hover ul {
+    display: block;
+}
